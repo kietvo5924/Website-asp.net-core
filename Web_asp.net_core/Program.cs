@@ -40,15 +40,10 @@ namespace Web_asp.net_core.Models
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseSession();
-
             app.UseAuthorization();
-
             app.MapRazorPages();
-
             app.Run();
         }
     }

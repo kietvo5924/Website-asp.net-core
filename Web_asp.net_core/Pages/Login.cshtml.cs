@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Web_asp.net_core.Pages
 {
-    public class PrivacyModel : PageModel
+    public class LoginModel : PageModel
     {
-        private readonly ILogger<PrivacyModel> _logger;
+        private readonly ILogger<LoginModel> _logger;
         private readonly AppDbContext _context;
 
-        public PrivacyModel(AppDbContext context, ILogger<PrivacyModel> logger)
+        public LoginModel(AppDbContext context, ILogger<LoginModel> logger)
         {
             _logger = logger;
             _context = context;
@@ -27,37 +27,45 @@ namespace Web_asp.net_core.Pages
 
         public IActionResult OnPostLogin()
         {
-            // Xác thực đăng nhập
+            // X�c th?c ??ng nh?p
             if (AuthenticateUser(UserName, Password))
             {
-                // Lưu thông tin đăng nhập vào Session hoặc ViewData
+                // L?u th�ng tin ??ng nh?p v�o Session ho?c ViewData
                 HttpContext.Session.SetString("UserName", UserName);
 
-                // Chuyển hướng sau khi đăng nhập thành công
-                return RedirectToPage("/ThemSanPham");
+                // Chuy?n h??ng sau khi ??ng nh?p th�nh c�ng
+                return RedirectToPage("/Index");
             }
             else
             {
-                // Xử lý khi đăng nhập thất bại, hiển thị thông báo lỗi
+                // X? l� khi ??ng nh?p th?t b?i, hi?n th? th�ng b�o l?i
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                 return RedirectToPage("/Register");
             }
         }
 
+        public IActionResult OnPostLogout()
+        {
+            // X�a Session UserName ?? ??ng xu?t ng??i d�ng
+            HttpContext.Session.Remove("UserName");
+
+            // Tr? v? m� tr?ng th�i HTTP 200 OK
+            return RedirectToPage("/Login");
+        }
+
         private bool AuthenticateUser(string userName, string password)
         {
-            // Truy vấn cơ sở dữ liệu để kiểm tra xem thông tin đăng nhập có hợp lệ
+            // Truy v?n c? s? d? li?u ?? ki?m tra xem th�ng tin ??ng nh?p c� h?p l?
             var userFromDatabase = _context.Customers.SingleOrDefault(u => u.UserName == userName);
 
-            // Nếu không tìm thấy tên người dùng
+            // N?u kh�ng t�m th?y t�n ng??i d�ng
             if (userFromDatabase == null || string.IsNullOrEmpty(userFromDatabase.Password))
             {
                 return false;
             }
-            // Kiểm tra xem mật khẩu có khớp với mật khẩu trong cơ sở dữ liệu hay không
+            // Ki?m tra xem m?t kh?u c� kh?p v?i m?t kh?u trong c? s? d? li?u hay kh�ng
 
             return BCrypt.Net.BCrypt.Verify(password, userFromDatabase.Password);
         }
     }
 }
-

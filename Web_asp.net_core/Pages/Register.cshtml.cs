@@ -45,7 +45,7 @@ namespace Web_asp.net_core.Pages
                 _context.SaveChanges();
 
                 // Chuy?n h??ng sau khi ??ng ký thành công
-                return RedirectToPage("/Privacy", new { UserName = Customer.UserName });
+                return RedirectToPage("/Login", new { UserName = Customer.UserName });
             }
 
             // X? lý khi ModelState không h?p l?

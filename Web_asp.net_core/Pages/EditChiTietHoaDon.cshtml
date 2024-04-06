@@ -1,7 +1,7 @@
 ﻿@page
-@model Web_asp.net_core.Pages.PrivacyModel
+@model Web_asp.net_core.Pages.EditChiTietHoaDonModel
 @{
-    ViewData["Title"] = "Privacy";
+    ViewData["Title"] = "Edit chi tiết hóa đơn";
 }
 
 <!-- ~/Pages/Index.cshtml -->
@@ -23,14 +23,14 @@
     <link href="~/lib/bootstrap/dist/css/apexcharts.css" rel="stylesheet">
     <link href="~/lib/bootstrap/dist/css/tooplate-mini-finance.css" rel="stylesheet">
 
-    <title>Privacy</title>
+    <title>EditNhomHang</title>
 </head>
 <body>
     <header class="navbar sticky-top flex-md-nowrap">
         <div class="col-md-3 col-lg-3 me-0 px-3 fs-6">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" asp-page="Index">
                 <i class="bi-box"></i>
-                CTy_May_VT
+                Mini Finance
             </a>
         </div>
 
@@ -191,10 +191,12 @@
                         </li>
 
                         <li class="border-top mt-3 pt-2 mx-4">
-                            <a class="dropdown-item ms-0 me-0" href="#">
-                                <i class="bi-box-arrow-left me-2"></i>
-                                Logout
-                            </a>
+                            <form id="logoutForm" method="post" asp-page-handler="Logout">
+                                <button type="submit" class="nav-link">
+                                    <i class="bi-box-arrow-left me-2"></i>
+                                    Logout
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </div>
@@ -208,21 +210,21 @@
                 <div class="position-sticky py-4 px-3 sidebar-sticky">
                     <ul class="nav flex-column h-100">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" asp-page="Index">
+                            <a class="nav-link" aria-current="page" asp-page="/Index">
                                 <i class="bi-house-fill me-2"></i>
                                 Overview
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" asp-page="Privacy">
+                            <a class="nav-link" asp-page="/Login">
                                 <i class="bi bi-box-arrow-in-right me-2"></i>
                                 Login
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" asp-page="Register">
+                            <a class="nav-link" asp-page="/Register">
                                 <i class="bi-person-add me-2"></i>
                                 Create account
                             </a>
@@ -234,39 +236,41 @@
                                 Thêm bảng
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" asp-page="ThemSanPham">Thêm sản phẩm</a></li>
-                                <li><a class="dropdown-item" asp-page="ThemChiTietHoaDon">Thêm chi tiết hóa đơn</a></li>
-                                <li><a class="dropdown-item" asp-page="ThemDaiLy">Thêm đại lý</a></li>
-                                <li><a class="dropdown-item" asp-page="ThemHoaDon">Thêm hóa đơn</a></li>
-                                <li><a class="dropdown-item" asp-page="ThemThanhToan">Thêm thanh toán</a></li>
+                                <li><a class="dropdown-item" asp-page="/ThemSanPham">Thêm sản phẩm</a></li>
+                                <li><a class="dropdown-item" asp-page="/ThemChiTietHoaDon">Thêm chi tiết hóa đơn</a></li>
+                                <li><a class="dropdown-item" asp-page="/ThemDaiLy">Thêm đại lý</a></li>
+                                <li><a class="dropdown-item" asp-page="/ThemHoaDon">Thêm hóa đơn</a></li>
+                                <li><a class="dropdown-item" asp-page="/ThemThanhToan">Thêm thanh toán</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
-                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi-plus-circle me-2"></i>
                                 Chi Tiết Bảng
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" asp-page="SanPham">Sản phẩm</a></li>
-                                <li><a class="dropdown-item" asp-page="ChiTietHoaDon">Chi Tiết Hóa Đơn</a></li>
-                                <li><a class="dropdown-item" asp-page="DaiLy">Đại Lý</a></li>
-                                <li><a class="dropdown-item" asp-page="HoaDon">Hóa Đơn</a></li>
-                                <li><a class="dropdown-item" asp-page="ThanhToan">Thanh Toán</a></li>
+                                <li><a class="dropdown-item" asp-page="/anPham">Sản phẩm</a></li>
+                                <li><a class="nav-link dropdown-item active" asp-page="/ChiTietHoaDon">Chi Tiết Hóa Đơn</a></li>
+                                <li><a class="dropdown-item" asp-page="/DaiLy">Đại Lý</a></li>
+                                <li><a class="dropdown-item" asp-page="/HoaDon">Hóa Đơn</a></li>
+                                <li><a class="dropdown-item" asp-page="/ThanhToan">Thanh Toán</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item border-top mt-auto pt-2">
-                            <a class="nav-link" href="#">
-                                <i class="bi-box-arrow-left me-2"></i>
-                                Logout
-                            </a>
+                            <form id="logoutForm" method="post" asp-page-handler="Logout">
+                                <button type="submit" class="nav-link">
+                                    <i class="bi-box-arrow-left me-2"></i>
+                                    Logout
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </div>
             </nav>
 
-                <!-- Main Content -->
+            <!-- Main Content -->
             <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
                 <div class="title-group mb-3">
                     <!-- Modal -->
@@ -274,36 +278,62 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-5 col-12 mx-auto">
-                                    <form class="custom-form login-form" role="form" method="post" asp-page-handler="Login">
-                                        <h2 class="h2 text-center mb-4 pb-2">Login Form</h2>
+                                    <form class="custom-form login-form" method="post">
+                                        <h2 class="h2 text-center mb-4 pb-2"> Sửa Chi Tiết Hóa Đơn</h2>
 
-                                        <div class="form-floating mb-4 p-0">
-                                            <input style="height: 40px;" type="text" name="UserName" id="UserName" class="form-control" placeholder="Your name" required="">
-
-                                            <label for="UserName">Your name</label>
+                                        <div class="mb-4">
+                                            <label for="SoHoaDon">Số Hóa Đơn:</label>
+                                            <select id="SoHoaDon" name="SoHoaDon" class="form-control" required>
+                                                @if (Model.ChiTietHoaDonToUpdate.SoHoaDon != 0)
+                                                {
+                                                    var selectedDiaChi = Model.ListHoaDon.FirstOrDefault(d => d.SoHD == Model.ChiTietHoaDonToUpdate.SoHoaDon);
+                                                    if (selectedDiaChi != null)
+                                                    {
+                                                        <option value="@Model.ChiTietHoaDonToUpdate.SoHoaDon">@selectedDiaChi.SoHD</option>
+                                                    }
+                                                }
+                                                @foreach (var hoaDon in Model.ListHoaDon)
+                                                {
+                                                    if (hoaDon.SoHD != Model.ChiTietHoaDonToUpdate.SoHoaDon)
+                                                    {
+                                                        <option value="@hoaDon.SoHD">@hoaDon.SoHD</option>
+                                                    }
+                                                }
+                                            </select>
+                                            <span asp-validation-for="ChiTietHoaDonToUpdate.SoHoaDon" class="text-danger"></span>
                                         </div>
 
-                                        <div class="form-floating p-0">
-                                            <input style="height: 40px;" type="Password" name="Password" id="Password" class="form-control" placeholder="Password" required="">
-
-                                            <label for="Password">Password</label>
+                                        <div class="mb-4">
+                                            <label for="MaSanPham">Sản phẩm:</label>
+                                            <select id="MaSanPham" name="MaSanPham" class="form-control" required>
+                                                @if (Model.ChiTietHoaDonToUpdate.MaSanPham != 0)
+                                                {
+                                                    var selectedDiaChi = Model.ListSanPham.FirstOrDefault(d => d.MaSanPham == Model.ChiTietHoaDonToUpdate.MaSanPham);
+                                                    if (selectedDiaChi != null)
+                                                    {
+                                                        <option value="@Model.ChiTietHoaDonToUpdate.MaSanPham">@selectedDiaChi.TenSanPham</option>
+                                                    }
+                                                }
+                                                @foreach (var sanPham in Model.ListSanPham)
+                                                {
+                                                    if (sanPham.MaSanPham != Model.ChiTietHoaDonToUpdate.MaSanPham)
+                                                    {
+                                                        <option value="@sanPham.MaSanPham">@sanPham.TenSanPham</option>
+                                                    }
+                                                }
+                                            </select>
+                                            <span asp-validation-for="ChiTietHoaDonToUpdate.MaSanPham" class="text-danger"></span>
                                         </div>
 
-                                        <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                Remember me
-                                            </label>
+                                        <div class="mb-4">
+                                            <label for="SoLuong">Số lượng:</label>
+                                            <input type="number" id="SoLuong" name="SoLuong" class="form-control" placeholder="Nhập số lượng" required value="@Model.ChiTietHoaDonToUpdate.SoLuong">
+                                            <span asp-validation-for="ChiTietHoaDonToUpdate.SoLuong" class="text-danger"></span>
                                         </div>
 
                                         <div class="row justify-content-center align-items-center">
                                             <div class="col-lg-5 col-12">
-                                                <button type="submit" class="form-control">Login</button>
-                                            </div>
-
-                                            <div class="col-lg-5 col-12">
-                                                <a asp-page="/Register" class="btn custom-btn custom-border-btn">Register</a>
+                                                <button type="submit" class="form-control">Cập nhật</button>
                                             </div>
                                         </div>
                                     </form>
@@ -317,7 +347,7 @@
             <footer class="site-footer bg-light col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
                 <div class="col-lg-12 col-12">
                     <p>
-                        &copy; 2024 - May VT - <a asp-area="" asp-page="/Privacy" class="text-dark">Privacy</a>
+                        &copy; 2024 - May VT - <a asp-area="" asp-page="/Index" class="text-dark">Trang Chủ</a>
                     </p>
                     <p>
                         Công ty May VT chuyên sản xuất và cung cấp sản phẩm may mặc chất lượng.
@@ -327,15 +357,42 @@
                     </p>
                 </div>
             </footer>
-
         </div>
     </div>
 
     <!-- JAVASCRIPT FILES -->
     <script src="~/lib/bootstrap/dist/js/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/countdown.js"></script>
     <script src="~/lib/bootstrap/dist/js/apexcharts.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var selectAddress = $('#MaSanPham');
+
+            // Kích hoạt Select2 cho dropdown địa chỉ
+            selectAddress.select2({
+                dropdownAutoWidth: true,
+                width: '100%',
+                placeholder: "Chọn sản phẩm",
+                allowClear: true
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var selectAddress = $('#SoHoaDon');
+
+            // Kích hoạt Select2 cho dropdown địa chỉ
+            selectAddress.select2({
+                dropdownAutoWidth: true,
+                width: '100%',
+                placeholder: "Chọn số hóa đơn",
+                allowClear: true
+            });
+        });
+    </script>
 </body>
 </html>
-

@@ -207,10 +207,12 @@
                         </li>
 
                         <li class="border-top mt-3 pt-2 mx-4">
-                            <a class="dropdown-item ms-0 me-0" href="#">
-                                <i class="bi-box-arrow-left me-2"></i>
-                                Logout
-                            </a>
+                            <form id="logoutForm" method="post" asp-page-handler="Logout">
+                                <button type="submit" class="nav-link">
+                                    <i class="bi-box-arrow-left me-2"></i>
+                                    Logout
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </div>
@@ -231,7 +233,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" asp-page="Privacy">
+                            <a class="nav-link" asp-page="/Login">
                                 <i class="bi bi-box-arrow-in-right me-2"></i>
                                 Login
                             </a>
@@ -267,16 +269,18 @@
                                 <li><a class="dropdown-item" asp-page="SanPham">Sản phẩm</a></li>
                                 <li><a class="dropdown-item" asp-page="ChiTietHoaDon">Chi Tiết Hóa Đơn</a></li>
                                 <li><a class="dropdown-item" asp-page="DaiLy">Đại Lý</a></li>
-                                <li><a class="nav-link active dropdown-item" asp-page="HoaDon">Hóa Đơn</a></li>
-                                <li><a class="dropdown-item" asp-page="ThanhToan">Thanh Toán</a></li>
+                                <li><a class="dropdown-item" asp-page="HoaDon">Hóa Đơn</a></li>
+                                <li><a class="nav-link active dropdown-item" asp-page="ThanhToan">Thanh Toán</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item border-top mt-auto pt-2">
-                            <a class="nav-link" href="#">
-                                <i class="bi-box-arrow-left me-2"></i>
-                                Logout
-                            </a>
+                            <form id="logoutForm" method="post" asp-page-handler="Logout">
+                                <button type="submit" class="nav-link">
+                                    <i class="bi-box-arrow-left me-2"></i>
+                                    Logout
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </div>
@@ -296,7 +300,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Ngày Lập Phiếu</th>
-                                                    <th>Mã Đại Lý</th>
+                                                    <th>Đại Lý</th>
                                                     <th>Số Tiền</th>
                                                 </tr>
                                             </thead>
@@ -305,10 +309,10 @@
                                                 {
                                                     <tr>
                                                         <td>@thanhToan.NgayLapPhieu</td>
-                                                        <td>@thanhToan.MaDaiLy</td>
+                                                        <td>@(thanhToan.DaiLy != null ? thanhToan.DaiLy.TenChuDaiLy : "Unknown")</td>
                                                         <td>@thanhToan.SoTien</td>
                                                         <td>
-                                                            <a asp-page="EditSanPham" asp-route-id="@thanhToan.SoPhieuThu" class="btn btn-custom"><i class="bi bi-pencil"></i></a>
+                                                            <a asp-page="/EditThanhToan" asp-route-id="@thanhToan.SoPhieuThu" class="btn btn-custom"><i class="bi bi-pencil"></i></a>
                                                             <a asp-page-handler="Delete" asp-route-id="@thanhToan.SoPhieuThu" class="btn btn-custom"><i class="bi bi-trash"></i></a>
                                                         </td>
                                                     </tr>

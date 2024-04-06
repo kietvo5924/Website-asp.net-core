@@ -14,11 +14,31 @@ namespace Web_asp.net_core.Pages
             _context = context;
         }
 
+        public IActionResult OnPostLogout()
+        {
+            HttpContext.Session.Remove("UserName");
+
+            return RedirectToPage("/Login");
+        }
+
         public List<ThanhToan> ThanhToanList { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
+            // Ki?m tra xem Session UserName ?ã t?n t?i hay không
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("UserName")))
+            {
+                // N?u không, chuy?n h??ng ng??i dùng ??n trang ??ng nh?p
+                return RedirectToPage("/Login");
+            }
+
             ThanhToanList = await _context.ThanhToans.ToListAsync();
+            foreach (var thanhToan in ThanhToanList)
+            {
+                thanhToan.DaiLy = await _context.DaiLies.FindAsync(thanhToan.MaDaiLy);
+            }
+
+            return Page();
         }
 
         public async Task<IActionResult> OnGetDeleteAsync(int id)

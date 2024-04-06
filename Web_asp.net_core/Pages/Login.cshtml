@@ -1,7 +1,7 @@
 ﻿@page
-@model IndexModel
+@model Web_asp.net_core.Pages.LoginModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Login";
 }
 
 <!-- ~/Pages/Index.cshtml -->
@@ -23,8 +23,7 @@
     <link href="~/lib/bootstrap/dist/css/apexcharts.css" rel="stylesheet">
     <link href="~/lib/bootstrap/dist/css/tooplate-mini-finance.css" rel="stylesheet">
 
-
-    <title>Home Page</title>
+    <title>Privacy</title>
 </head>
 <body>
     <header class="navbar sticky-top flex-md-nowrap">
@@ -192,12 +191,10 @@
                         </li>
 
                         <li class="border-top mt-3 pt-2 mx-4">
-                            <form id="logoutForm" method="post" asp-page-handler="Logout">
-                                <button type="submit" class="nav-link">
-                                    <i class="bi-box-arrow-left me-2"></i>
-                                    Logout
-                                </button>
-                            </form>
+                            <a class="dropdown-item ms-0 me-0" href="#">
+                                <i class="bi-box-arrow-left me-2"></i>
+                                Logout
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -211,14 +208,14 @@
                 <div class="position-sticky py-4 px-3 sidebar-sticky">
                     <ul class="nav flex-column h-100">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" asp-page="Index">
+                            <a class="nav-link" aria-current="page" asp-page="Index">
                                 <i class="bi-house-fill me-2"></i>
                                 Overview
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" asp-page="/Login">
+                            <a class="nav-link active" asp-page="/Login">
                                 <i class="bi bi-box-arrow-in-right me-2"></i>
                                 Login
                             </a>
@@ -232,7 +229,7 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi-plus-circle me-2"></i>
                                 Thêm bảng
                             </a>
@@ -246,7 +243,7 @@
                         </li>
 
                         <li class="dropdown">
-                            <a class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi-plus-circle me-2"></i>
                                 Chi Tiết Bảng
                             </a>
@@ -260,12 +257,10 @@
                         </li>
 
                         <li class="nav-item border-top mt-auto pt-2">
-                            <form id="logoutForm" method="post" asp-page-handler="Logout">
-                                <button type="submit" class="nav-link">
-                                    <i class="bi-box-arrow-left me-2"></i>
-                                    Logout
-                                </button>
-                            </form>
+                            <a class="nav-link" href="#">
+                                <i class="bi-box-arrow-left me-2"></i>
+                                Logout
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -279,9 +274,39 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-5 col-12 mx-auto">
-                                    <h1 class="h2 mb-0">Overview</h1>
+                                    <form class="custom-form login-form" role="form" method="post" asp-page-handler="Login">
+                                        <h2 class="h2 text-center mb-4 pb-2">Login Form</h2>
 
-                                    <small class="text-muted">Hello Teacher</small>
+                                        <div class="form-floating mb-4 p-0">
+                                            <input style="height: 40px;" type="text" name="UserName" id="UserName" class="form-control" placeholder="Your name" required="">
+
+                                            <label for="UserName">Your name</label>
+                                        </div>
+
+                                        <div class="form-floating p-0">
+                                            <input style="height: 40px;" type="Password" name="Password" id="Password" class="form-control" placeholder="Password" required="">
+
+                                            <label for="Password">Password</label>
+                                        </div>
+
+                                        <div class="form-check mb-4">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                Remember me
+                                            </label>
+                                        </div>
+
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-lg-5 col-12">
+                                                <button type="submit" class="form-control">Login</button>
+                                            </div>
+
+                                            <div class="col-lg-5 col-12">
+                                                <a asp-page="/Register" class="btn custom-btn custom-border-btn">Register</a>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -302,6 +327,7 @@
                     </p>
                 </div>
             </footer>
+
         </div>
     </div>
 

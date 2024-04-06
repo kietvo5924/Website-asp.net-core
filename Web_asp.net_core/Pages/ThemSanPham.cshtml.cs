@@ -13,6 +13,24 @@ namespace Web_asp.net_core.Pages
             _context = context;
             _logger = logger;
         }
+        public IActionResult OnPostLogout()
+        {
+            HttpContext.Session.Remove("UserName");
+
+            return RedirectToPage("/Login");
+        }
+
+        public IActionResult OnGet()
+        {
+            // Ki?m tra xem Session UserName ?ã t?n t?i hay không
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("UserName")))
+            {
+                // N?u không, chuy?n h??ng ng??i dùng ??n trang ??ng nh?p
+                return RedirectToPage("/Login");
+            }
+
+            return Page();
+        }
 
         public IActionResult OnPostLuuThongTinSanPham(SanPham sanPham)
         {

@@ -35,5 +35,22 @@
     <script src="~/lib/bootstrap/dist/js/custom.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script type="module">
+        import { fairyDustCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+
+        new fairyDustCursor();
+    </script>
+
+    <script>
+        window.addEventListener("load", (event) => {
+            new cursoreffects.fairyDustCursor({
+                colors: ["#ff0000", "#ff7f00", "#ffff00", "#00ff00", "#0000ff", "#4b0082", "#9400d3"],
+            });
+        });
+    </script>
 </body>
 </html>

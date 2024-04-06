@@ -16,5 +16,12 @@ namespace Web_asp.net_core.Pages
         {
 
         }
+
+        public IActionResult OnPostLogout()
+        {
+            HttpContext.Session.Remove("UserName");
+
+            return RedirectToPage("/Login");
+        }
     }
 }

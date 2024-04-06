@@ -1,7 +1,7 @@
 ﻿@page
-@model IndexModel
+@model Web_asp.net_core.Pages.EditDaiLyModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Edit đại lý";
 }
 
 <!-- ~/Pages/Index.cshtml -->
@@ -23,15 +23,14 @@
     <link href="~/lib/bootstrap/dist/css/apexcharts.css" rel="stylesheet">
     <link href="~/lib/bootstrap/dist/css/tooplate-mini-finance.css" rel="stylesheet">
 
-
-    <title>Home Page</title>
+    <title>EditNhomHang</title>
 </head>
 <body>
     <header class="navbar sticky-top flex-md-nowrap">
         <div class="col-md-3 col-lg-3 me-0 px-3 fs-6">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" asp-page="Index">
                 <i class="bi-box"></i>
-                CTy_May_VT
+                Mini Finance
             </a>
         </div>
 
@@ -211,7 +210,7 @@
                 <div class="position-sticky py-4 px-3 sidebar-sticky">
                     <ul class="nav flex-column h-100">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" asp-page="Index">
+                            <a class="nav-link" aria-current="page" asp-page="/Index">
                                 <i class="bi-house-fill me-2"></i>
                                 Overview
                             </a>
@@ -225,37 +224,37 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" asp-page="Register">
+                            <a class="nav-link" asp-page="/Register">
                                 <i class="bi-person-add me-2"></i>
                                 Create account
                             </a>
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi-plus-circle me-2"></i>
                                 Thêm bảng
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" asp-page="ThemSanPham">Thêm sản phẩm</a></li>
-                                <li><a class="dropdown-item" asp-page="ThemChiTietHoaDon">Thêm chi tiết hóa đơn</a></li>
-                                <li><a class="dropdown-item" asp-page="ThemDaiLy">Thêm đại lý</a></li>
-                                <li><a class="dropdown-item" asp-page="ThemHoaDon">Thêm hóa đơn</a></li>
-                                <li><a class="dropdown-item" asp-page="ThemThanhToan">Thêm thanh toán</a></li>
+                                <li><a class="dropdown-item" asp-page="/ThemSanPham">Thêm sản phẩm</a></li>
+                                <li><a class="dropdown-item" asp-page="/ThemChiTietHoaDon">Thêm chi tiết hóa đơn</a></li>
+                                <li><a class="dropdown-item" asp-page="/ThemDaiLy">Thêm đại lý</a></li>
+                                <li><a class="dropdown-item" asp-page="/ThemHoaDon">Thêm hóa đơn</a></li>
+                                <li><a class="dropdown-item" asp-page="/ThemThanhToan">Thêm thanh toán</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
-                            <a class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi-plus-circle me-2"></i>
                                 Chi Tiết Bảng
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" asp-page="SanPham">Sản phẩm</a></li>
-                                <li><a class="dropdown-item" asp-page="ChiTietHoaDon">Chi Tiết Hóa Đơn</a></li>
-                                <li><a class="dropdown-item" asp-page="DaiLy">Đại Lý</a></li>
-                                <li><a class="dropdown-item" asp-page="HoaDon">Hóa Đơn</a></li>
-                                <li><a class="dropdown-item" asp-page="ThanhToan">Thanh Toán</a></li>
+                                <li><a class="dropdown-item" asp-page="/anPham">Sản phẩm</a></li>
+                                <li><a class="dropdown-item" asp-page="/ChiTietHoaDon">Chi Tiết Hóa Đơn</a></li>
+                                <li><a class="nav-link dropdown-item active" asp-page="/DaiLy">Đại Lý</a></li>
+                                <li><a class="dropdown-item" asp-page="/HoaDon">Hóa Đơn</a></li>
+                                <li><a class="dropdown-item" asp-page="/ThanhToan">Thanh Toán</a></li>
                             </ul>
                         </li>
 
@@ -279,9 +278,47 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-5 col-12 mx-auto">
-                                    <h1 class="h2 mb-0">Overview</h1>
+                                    <form class="custom-form login-form" method="post">
+                                        <h2 class="h2 text-center mb-4 pb-2"> Sửa Đại Lý</h2>
 
-                                    <small class="text-muted">Hello Teacher</small>
+                                        <input type="hidden" id="MaSanPham" name="MaDaiLy" value="@Model.DaiLyToUpDate.MaDaiLy" />
+
+                                        <div class="mb-4">
+                                            <label for="TenChuDaiLy">Tên chủ đại lý:</label>
+                                            <input type="text" id="TenChuDaiLy" name="TenChuDaiLy" class="form-control" placeholder="Nhập tên chủ đại lý" required value="@Model.DaiLyToUpDate.TenChuDaiLy">
+                                            <span asp-validation-for="DaiLyToUpDate.TenChuDaiLy" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label for="DiaChi">Địa chỉ:</label>
+                                            <input type="text" id="DiaChi" name="DiaChi" class="form-control" placeholder="Nhập địa chỉ" required value="@Model.DaiLyToUpDate.DiaChi">
+                                            <span asp-validation-for="DaiLyToUpDate.DiaChi" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label for="SoDienThoai">Số điện thoại:</label>
+                                            <input type="tel" id="SoDienThoai" name="SoDienThoai" class="form-control" placeholder="Nhập số điện thoại" required value="@Model.DaiLyToUpDate.SoDienThoai">
+                                            <span asp-validation-for="DaiLyToUpDate.SoDienThoai" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label for="HinhThucThanhToan">Hình thức thanh toán:</label>
+                                            <input type="text" id="HinhThucThanhToan" name="HinhThucThanhToan" class="form-control" placeholder="Nhập hình thức thanh toán" required value="@Model.DaiLyToUpDate.HinhThucThanhToan">
+                                            <span asp-validation-for="DaiLyToUpDate.HinhThucThanhToan" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label for="NoDauKy">Nợ đầu kỳ:</label>
+                                            <input type="number" id="NoDauKy" name="NoDauKy" class="form-control" placeholder="Nhập nợ đầu kỳ" required value="@Model.DaiLyToUpDate.NoDauKy">
+                                            <span asp-validation-for="DaiLyToUpDate.NoDauKy" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-lg-5 col-12">
+                                                <button type="submit" class="form-control">Cập nhật</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -292,7 +329,7 @@
             <footer class="site-footer bg-light col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
                 <div class="col-lg-12 col-12">
                     <p>
-                        &copy; 2024 - May VT - <a asp-area="" asp-page="/Privacy" class="text-dark">Privacy</a>
+                        &copy; 2024 - May VT - <a asp-area="" asp-page="/Index" class="text-dark">Trang Chủ</a>
                     </p>
                     <p>
                         Công ty May VT chuyên sản xuất và cung cấp sản phẩm may mặc chất lượng.
@@ -308,7 +345,9 @@
     <!-- JAVASCRIPT FILES -->
     <script src="~/lib/bootstrap/dist/js/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/countdown.js"></script>
     <script src="~/lib/bootstrap/dist/js/apexcharts.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/custom.js"></script>
 </body>
 </html>
+

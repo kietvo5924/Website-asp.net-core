@@ -207,10 +207,12 @@
                         </li>
 
                         <li class="border-top mt-3 pt-2 mx-4">
-                            <a class="dropdown-item ms-0 me-0" href="#">
-                                <i class="bi-box-arrow-left me-2"></i>
-                                Logout
-                            </a>
+                            <form id="logoutForm" method="post" asp-page-handler="Logout">
+                                <button type="submit" class="nav-link">
+                                    <i class="bi-box-arrow-left me-2"></i>
+                                    Logout
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </div>
@@ -231,7 +233,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" asp-page="Privacy">
+                            <a class="nav-link" asp-page="/Login">
                                 <i class="bi bi-box-arrow-in-right me-2"></i>
                                 Login
                             </a>
@@ -273,10 +275,12 @@
                         </li>
 
                         <li class="nav-item border-top mt-auto pt-2">
-                            <a class="nav-link" href="#">
-                                <i class="bi-box-arrow-left me-2"></i>
-                                Logout
-                            </a>
+                            <form id="logoutForm" method="post" asp-page-handler="Logout">
+                                <button type="submit" class="nav-link">
+                                    <i class="bi-box-arrow-left me-2"></i>
+                                    Logout
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </div>
@@ -295,7 +299,7 @@
                                         <table class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>Mã Đại Lý</th>
+                                                    <th>Đại Lý</th>
                                                     <th>Ngày Lập Hóa Đơn</th>
                                                 </tr>
                                             </thead>
@@ -303,10 +307,10 @@
                                                 @foreach (var hoaDon in Model.HoaDonList)
                                                 {
                                                     <tr>
-                                                        <td>@hoaDon.MaDaiLy</td>
+                                                        <td>@(hoaDon.DaiLy != null ? hoaDon.DaiLy.TenChuDaiLy : "Unknown")</td>
                                                         <td>@hoaDon.NgayLapHoaDon</td>
                                                         <td>
-                                                            <a asp-page="EditSanPham" asp-route-id="@hoaDon.SoHD" class="btn btn-custom"><i class="bi bi-pencil"></i></a>
+                                                            <a asp-page="/EditHoaDon" asp-route-id="@hoaDon.SoHD" class="btn btn-custom"><i class="bi bi-pencil"></i></a>
                                                             <a asp-page-handler="Delete" asp-route-id="@hoaDon.SoHD" class="btn btn-custom"><i class="bi bi-trash"></i></a>
                                                         </td>
                                                     </tr>
