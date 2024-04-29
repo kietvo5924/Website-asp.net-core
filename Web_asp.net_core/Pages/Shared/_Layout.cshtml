@@ -20,6 +20,28 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="~/lib/bootstrap/dist/css/select2.min.css" rel="stylesheet">
 
+    <style>
+        .abc {
+            border-radius: 10px;
+            color: var(--p-color);
+            font-size: var(--menu-font-size);
+            display: inline-block;
+            position: relative;
+            margin-top: 5px;
+            margin-right: 8px;
+            padding-left: 16px;
+            padding-right: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+            .abc.active,
+            .abc:hover {
+                background: var(--primary-color); /* Màu nền và màu chữ khi hover */
+                color: var(--white-color);
+            }
+    </style>
+
 </head>
 <body>
     @RenderBody()
@@ -46,11 +68,13 @@
     </script>
 
     <script>
+
         window.addEventListener("load", (event) => {
             new cursoreffects.fairyDustCursor({
                 colors: ["#ff0000", "#ff7f00", "#ffff00", "#00ff00", "#0000ff", "#4b0082", "#9400d3"],
             });
         });
     </script>
+
 </body>
 </html>
