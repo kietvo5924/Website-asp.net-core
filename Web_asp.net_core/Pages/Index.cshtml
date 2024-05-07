@@ -24,11 +24,21 @@
     <link href="~/lib/bootstrap/dist/css/tooplate-mini-finance.css" rel="stylesheet">
 
     <title>Home Page</title>
+
+    <style>
+        .introjs-tooltip {
+            max-width: 600px; /* Đặt chiều rộng tối đa */
+            font-size: 16px; /* Đặt kích thước phông chữ */
+            padding: 20px; /* Thêm khoảng cách lề */
+        }
+    </style>
 </head>
 <body>
+    <div data-title="Welcome!" data-intro="Chào mừng bạn! 👋 Hãy đăng nhập để có thể khám phá thêm nhiều chức năng của website."/>
+
     <header class="navbar sticky-top flex-md-nowrap">
         <div class="col-md-3 col-lg-3 me-0 px-3 fs-6">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" asp-page="/Index">
                 <i class="bi-box"></i>
                 CTy_May_VT
             </a>
@@ -309,6 +319,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/apexcharts.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/custom.js"></script>
-
+    
 </body>
 </html>

@@ -1,0 +1,49 @@
+﻿@page
+@using Web_asp.net_core.Models
+@model Web_asp.net_core.Pages.Detail.SanPhamDetailModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Chi tiết về sản phẩm</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Tên sản phẩm:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SanPham.TenSanPham)
+        </dd>
+        <dt class="col-sm-2">
+            Kích thước sản phẩm:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SanPham.Size)
+        </dd>
+        <dt class="col-sm-2">
+            Đơn giá trả chậm:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SanPham.DonGiaTraCham)
+        </dd>
+        <dt class="col-sm-2">
+            Đơn giá trả ngay:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SanPham.DonGiaTraNgay)
+        </dd>
+        <dt class="col-sm-2">
+            Đơn giá trả góp:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SanPham.DonGiaTraGop)
+        </dd>
+        <dt class="col-sm-2">
+            Ghi chú:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SanPham.GhiChu)
+        </dd>
+    </dl>
+</div>

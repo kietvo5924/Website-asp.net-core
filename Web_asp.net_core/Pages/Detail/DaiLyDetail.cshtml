@@ -1,0 +1,43 @@
+﻿@page
+@using Web_asp.net_core.Models
+@model Web_asp.net_core.Pages.Detail.DaiLyDetailModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Chi tiết về sản phẩm</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Tên chủ đại lý:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.daiLy.TenChuDaiLy)
+        </dd>
+        <dt class="col-sm-2">
+            Số điện thoại:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.daiLy.SoDienThoai)
+        </dd>
+        <dt class="col-sm-2">
+            Địa chỉ:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.daiLy.DiaChi)
+        </dd>
+        <dt class="col-sm-2">
+            Hình thức thanh toán:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.daiLy.HinhThucThanhToan)
+        </dd>
+        <dt class="col-sm-2">
+            Nợ đầu kỳ:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.daiLy.NoDauKy)
+        </dd>
+    </dl>
+</div>

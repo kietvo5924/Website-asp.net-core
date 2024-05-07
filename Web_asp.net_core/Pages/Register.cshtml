@@ -28,7 +28,7 @@
 <body>
     <header class="navbar sticky-top flex-md-nowrap">
         <div class="col-md-3 col-lg-3 me-0 px-3 fs-6">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" asp-page="/Index>
                 <i class="bi-box"></i>
                 CTy_May_VT
             </a>
@@ -273,25 +273,25 @@
                     <section class="hero-section d-flex justify-content-center align-items-center">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-5 col-12 mx-auto">
+                                <div class="col-lg-5 col-12 mx-auto" data-intro="Đây là biểu mẫu đăng ký của bạn." data-title="Đăng ký">
                                     <form class="custom-form login-form" role="form" method="post" asp-page-handler="Register">
                                         <h2 class="h2 text-center mb-4 pb-2">Create an account</h2>
 
-                                        <div class="form-floating mb-4 p-0">
+                                        <div class="form-floating mb-4 p-0" data-intro="Nhập tên của bạn vào đây." data-title="Đăng ký">
                                             <input style="height: 40px;" asp-for="Customer.UserName" class="form-control" placeholder="Your name" required="">
                                             <label asp-for="Customer.UserName">Your name</label>
                                         </div>
 
-                                        <div class="form-floating p-0">
+                                        <div class="form-floating p-0" data-intro="Nhập mật khẩu của bạn vào đây. Mật khẩu phải chứa ít nhất một ký tự đặc biệt và ít nhất 8 ký tự." data-title="Đăng ký">
                                             <input style="height: 40px;" asp-for="Customer.Password" type="password" class="form-control" placeholder="Password" required="" pattern="(?=.*[!@@#$%^&*()_+{}\[\]:;<>,.?/~`])\S{8,}" title="Password must be at least 8 characters long and contain at least one special character">
                                             <label asp-for="Customer.Password">Password</label>
                                         </div>
 
                                         <div class="row justify-content-center align-items-center">
-                                            <div class="col-lg-5 col-12">
+                                            <div class="col-lg-5 col-12" data-intro="Nhấn nút 'Submit' để tạo tài khoản mới." data-title="Đăng ký">
                                                 <button type="submit" class="form-control">Submit</button>
                                             </div>
-                                            <div class="col-lg-5 col-12">
+                                            <div class="col-lg-5 col-12" data-intro="Nếu đã có tài khoản, bạn có thể nhấn vào nút 'Login' để đăng nhập." data-title="Đăng ký">
                                                 <a asp-page="Privacy" class="btn custom-btn custom-border-btn">Login</a>
                                             </div>
                                         </div>

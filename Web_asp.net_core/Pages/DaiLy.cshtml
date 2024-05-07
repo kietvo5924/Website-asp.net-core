@@ -44,7 +44,7 @@
 <body>
     <header class="navbar sticky-top flex-md-nowrap">
         <div class="col-md-3 col-lg-3 me-0 px-3 fs-6">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" asp-page="/Index>
                 <i class="bi-box"></i>
                 CTy_May_VT
             </a>
@@ -318,6 +318,7 @@
                                                         <td>@daiLy.NoDauKy</td>
                                                         <td>
                                                             <a asp-page="/EditDaiLy" asp-route-id="@daiLy.MaDaiLy" class="btn btn-custom"><i class="bi bi-pencil"></i></a>
+                                                            <a asp-page="/Detail/DaiLyDetail" asp-route-id="@daiLy.MaDaiLy" class="btn btn-custom"><i class="bi bi-info-circle"></i></a>
                                                             <a asp-page-handler="Delete" asp-route-id="@daiLy.MaDaiLy" class="btn btn-custom"><i class="bi bi-trash"></i></a>
                                                         </td>
                                                     </tr>

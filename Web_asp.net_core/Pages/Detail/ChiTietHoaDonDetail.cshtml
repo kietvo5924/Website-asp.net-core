@@ -1,0 +1,30 @@
+﻿@page
+@using Web_asp.net_core.Models
+@model Web_asp.net_core.Pages.Detail.ChiTietHoaDonDetailModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Chi tiết về sản phẩm</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Số hóa đơn:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.chiTietHoaDon.SoHoaDon)
+        <dt class="col-sm-2">
+            Tên sản phẩm:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.chiTietHoaDon.SanPham.TenSanPham)
+        </dd>
+        <dt class="col-sm-2">
+            Số lượng:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.chiTietHoaDon.SoLuong)
+        </dd>
+    </dl>
+</div>

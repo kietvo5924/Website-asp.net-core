@@ -1,0 +1,25 @@
+﻿@page
+@using Web_asp.net_core.Models
+@model Web_asp.net_core.Pages.Detail.HoaDonDetailModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Chi tiết về sản phẩm</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Tên chủ đại lý:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.hoaDon.DaiLy.TenChuDaiLy)
+        </dd>
+        <dt class="col-sm-2">
+            Ngày lập hóa đơn:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.hoaDon.NgayLapHoaDon)
+        </dd>
+    </dl>
+</div>
